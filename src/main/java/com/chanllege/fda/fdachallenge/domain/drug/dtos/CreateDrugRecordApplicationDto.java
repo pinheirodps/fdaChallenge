@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.domain.Pageable;
 
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**

@@ -136,8 +136,8 @@ class DrugRecordApplicationServiceTest {
         String manufacturerName = "manufacturerName";
         String brandName = "brandName";
         Pageable pageable = PageRequest.of(0, 10);
-//        when(fdaClientExternalService.search(manufacturerName, brandName, pageable))
-//                .thenReturn(Optional.empty());
+        when(fdaClientExternalService.search(manufacturerName, brandName, pageable))
+                .thenThrow(DrugNotFoundException.class);
         assertThrows(
                 DrugNotFoundException.class,
                 () -> service.search(manufacturerName, brandName, pageable));

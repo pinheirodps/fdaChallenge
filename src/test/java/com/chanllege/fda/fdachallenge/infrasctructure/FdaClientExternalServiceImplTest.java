@@ -1,8 +1,6 @@
 package com.chanllege.fda.fdachallenge.infrasctructure;
 
 import com.chanllege.fda.fdachallenge.infrasctructure.dtos.OpenFDADrugRecordApplicationResponse;
-import com.chanllege.fda.fdachallenge.infrasctructure.dtos.Openfda;
-import com.chanllege.fda.fdachallenge.infrasctructure.dtos.Product;
 import com.chanllege.fda.fdachallenge.infrasctructure.dtos.Result;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,7 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Collections;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.when;

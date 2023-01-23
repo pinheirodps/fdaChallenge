@@ -1,8 +1,8 @@
 package com.chanllege.fda.fdachallenge.domain.drug.mapper;
 
+import com.chanllege.fda.fdachallenge.domain.drug.dtos.DrugRecordApplicationDto;
 import com.chanllege.fda.fdachallenge.domain.drug.dtos.DrugRecordStoredApplicationDto;
 import com.chanllege.fda.fdachallenge.domain.drug.dtos.ResponseCreateDrugRecordApplicationDto;
-import com.chanllege.fda.fdachallenge.domain.drug.dtos.DrugRecordApplicationDto;
 import com.chanllege.fda.fdachallenge.domain.drug.entities.DrugRecordApplication;
 import com.chanllege.fda.fdachallenge.infrasctructure.dtos.OpenFDADrugRecordApplicationResponse;
 import org.mapstruct.Mapper;

@@ -20,7 +20,7 @@ http://localhost:8080/swagger-ui/index.html
 ### Technologies:
 
 - [Java 17](#)
-- [Spring boot 2.7.0](#)
+- [Spring boot 2.7.8](#)
 - [mapstruct](#)
 - [lombok](#)
 - [zalando - problem-spring-web](#)

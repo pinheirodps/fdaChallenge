@@ -12,12 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Optional;
 
 import static com.chanllege.fda.fdachallenge.domain.util.Parameters.BRAND_NAME;
 import static com.chanllege.fda.fdachallenge.domain.util.Parameters.LIMIT;
@@ -34,25 +30,29 @@ public class FdaClientExternalServiceImpl implements FdaClientExternalService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Value( "${fda.endpoint}" )
+    @Value("${fda.endpoint}")
     @Setter
     private String fdaEndpoint;
 
     @Override
     public OpenFDADrugRecordApplicationResponse search(final String manufacturerName, final String brandName,
-                                                                 final Pageable pageable) {
+                                                       final Pageable pageable) {
+        ResponseEntity<OpenFDADrugRecordApplicationResponse> response;
+        try {
+            String url = fdaEndpoint + manufacturerName;
+            if (StringUtils.isNotEmpty(brandName)) {
+                url += BRAND_NAME + brandName;
+            }
+            url += LIMIT + pageable.getPageSize() + SKIP + pageable.getOffset();
 
-        String url = fdaEndpoint + manufacturerName;
-        if (StringUtils.isNotEmpty(brandName)){
-            url += BRAND_NAME + brandName;
-        }
-        url += LIMIT + pageable.getPageSize() + SKIP + pageable.getOffset();
+            response = restTemplate.exchange(url, HttpMethod.GET,
+                    null, OpenFDADrugRecordApplicationResponse.class);
 
-        ResponseEntity<OpenFDADrugRecordApplicationResponse> response = restTemplate.exchange(url, HttpMethod.GET,
-                null, OpenFDADrugRecordApplicationResponse.class);
-        if (Objects.requireNonNull(response.getBody()).getResults().isEmpty()){
+        } catch (HttpClientErrorException e) {
+            log.error(e.getMessage(), e);
             throw new DrugNotFoundException(manufacturerName, brandName, pageable);
         }
+
         return response.getBody();
 
     }

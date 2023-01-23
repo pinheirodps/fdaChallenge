@@ -27,7 +27,7 @@ public class DrugNotFoundException extends AbstractCustomThrowableProblem {
         super(TYPE, "Drug Not Found", Status.NOT_FOUND,
             String.format("Drug with manufacturerName %s brandName %s pageable %s not found",
                     manufacturerName, brandName, pageable), Map.of("manufacturerName", manufacturerName,
-                        "brandName", brandName, "pageable", pageable)
+                        "brandName", brandName == null ? "" : brandName, "pageable", pageable)
 
                 );
     }
