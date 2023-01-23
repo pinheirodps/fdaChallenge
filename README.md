@@ -14,6 +14,7 @@ The api consumes information from https://api.fda.gov/drug/drugsfda.json?,
 http://localhost:8080/swagger-ui/index.html
 
 ### Run
+- mvn clean install
 - docker compose build 
 - docker compose up
 
