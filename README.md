@@ -15,7 +15,7 @@ http://localhost:8080/swagger-ui/index.html
 
 ### Run
 - docker compose build 
-- docker compose up docker
+- docker compose up
 
 ### Technologies:
 
